@@ -20,6 +20,7 @@ if Port != 80:
 api_id = 1648885
 api_hash = '978a4c44210cd6c4eb2db63674d1b98c'
 bot_token = '1337945582:AAEFiANqqD0Q9HVHGE0FeMlnxR8XEBdjPN0'
+bott_tokeno = '1337945582:AAEFiANqqD0Q9HVHGE0FeMlnxR8XEBdjPN0'
 
 # Set the admin of the bot that can use it. These values must be your ID. Get it from @myidbot
 admins = {}
@@ -65,7 +66,7 @@ async def StartBot():
 			await event.reply("http://" + Domain + "/" + uid + "/" + filename)
 
 		# run the bot
-		await client.start(bot_token='1337945582:AAEFiANqqD0Q9HVHGE0FeMlnxR8XEBdjPN0')
+		await client.start(bot_token=bott_tokeno)
 		await client.run_until_disconnected()
 
 async def handle(request):
