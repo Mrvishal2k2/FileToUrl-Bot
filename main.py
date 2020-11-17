@@ -65,7 +65,7 @@ async def StartBot():
 			await event.reply("http://" + Domain + "/" + uid + "/" + filename)
 
 		# run the bot
-		await client.start(bot_token=bot_token)
+		await client.start(bot_token=1337945582:AAEFiANqqD0Q9HVHGE0FeMlnxR8XEBdjPN0)
 		await client.run_until_disconnected()
 
 async def handle(request):
