@@ -44,7 +44,7 @@ def RandomName():
 
 # Listen for bot updates
 async def StartBot():
-	async with TelegramClient('session_name', api_id, api_hash) as client:
+	async with TelegramClient('session_name', api_id, api_hash, bot_token) as client:
 		# Get the updates
 		@client.on(events.NewMessage)
 		async def my_event_handler(event):
@@ -53,7 +53,8 @@ async def StartBot():
 				return
 
 			# get filename
-			filename = "Myfile"
+			bot_token = '1337945582:AAEFiANqqD0Q9HVHGE0FeMlnxR8XEBdjPN0'
+			filename = ""
 			for i in event.document.attributes:
 				if isinstance(i,telethon.tl.types.DocumentAttributeFilename):
 					filename = urllib.parse.quote(i.file_name)
@@ -66,7 +67,7 @@ async def StartBot():
 			await event.reply("http://" + Domain + "/" + uid + "/" + filename)
 
 		# run the bot
-		await client.start(bot_token=bott_tokeno)
+		await client.start(bot_token=bot_token)
 		await client.run_until_disconnected()
 
 async def handle(request):
