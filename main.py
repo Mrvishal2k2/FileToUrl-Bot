@@ -20,10 +20,8 @@ if Port != 80:
 api_id = 1648885
 api_hash = '978a4c44210cd6c4eb2db63674d1b98c'
 bot_token = '1337945582:AAEFiANqqD0Q9HVHGE0FeMlnxR8XEBdjPN0'
-bott_tokeno = '1337945582:AAEFiANqqD0Q9HVHGE0FeMlnxR8XEBdjPN0'
 
 # Set the admin of the bot that can use it. These values must be your ID. Get it from @myidbot
-admins = {}
 
 # This is the dictionary that is used for downloading files
 # The keys are uuid4 of files given to user
@@ -44,7 +42,7 @@ def RandomName():
 
 # Listen for bot updates
 async def StartBot():
-	async with TelegramClient('session_name', api_id, api_hash) as client:
+	async with TelegramClient('session_name', api_id, api_hash, bot_token) as client:
 		# Get the updates
 		@client.on(events.NewMessage)
 		async def my_event_handler(event):
