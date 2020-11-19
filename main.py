@@ -77,8 +77,8 @@ async def handle(request):
 	r = request.headers.get("range")
 	# start a session
 	name = RandomName()
-	client = TelegramClient(name, api_id, api_hash)
-	await client.start(bot_token=bot_token)
+	client = TelegramClient(name, api_id, api_hash, bot_token)
+	await client.start()
 	if r == None:
 		resp = web.StreamResponse()
 		# set headers
