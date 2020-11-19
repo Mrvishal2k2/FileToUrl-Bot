@@ -44,7 +44,7 @@ def RandomName():
 
 # Listen for bot updates
 async def StartBot():
-	async with TelegramClient('session_name', api_id, api_hash, bot_token) as client:
+	async with TelegramClient('session_name', api_id, api_hash) as client:
 		# Get the updates
 		@client.on(events.NewMessage)
 		async def my_event_handler(event):
