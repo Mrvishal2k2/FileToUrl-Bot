@@ -10,8 +10,9 @@ from aiohttp import web
 from telethon import TelegramClient, events
 
 # Please fill this with IP or domain for your server. The IP is used to generate the links for users
-Domain = "streamtest20.herokuapp.com"
-Port = 8080
+Domain = "https://hsbbsnsjsbs.herokuapp.com"
+Port = 80
+
 if Port != 80:
 	Domain += ":" + str(Port)
 
@@ -19,9 +20,9 @@ if Port != 80:
 # api_hash from https://my.telegram.org, under API Development.
 api_id = 1648885
 api_hash = '978a4c44210cd6c4eb2db63674d1b98c'
-bot_token = '1337945582:AAEFiANqqD0Q9HVHGE0FeMlnxR8XEBdjPN0'
-
+bot_token = '1222393558:AAHeO7A9u6sMoD5-UZ3Y665it_jE-frkStI'
 # Set the admin of the bot that can use it. These values must be your ID. Get it from @myidbot
+admins = {}
 
 # This is the dictionary that is used for downloading files
 # The keys are uuid4 of files given to user
@@ -42,10 +43,12 @@ def RandomName():
 
 # Listen for bot updates
 async def StartBot():
-	async with TelegramClient('session_name', api_id, api_hash, bot_token) as client:
+	async with TelegramClient('session_name', api_id, api_hash) as client:
 		# Get the updates
 		@client.on(events.NewMessage)
 		async def my_event_handler(event):
+			if event.message.from_id not in admins: # Check admins; If you want to create a public bot just remove these two lines
+				return
 			if event.document == None: # Check if they have file
 				await event.reply('Please send me a file to convert it into a link. Links are valid for 24 hours')
 				return
@@ -64,20 +67,20 @@ async def StartBot():
 			await event.reply("http://" + Domain + "/" + uid + "/" + filename)
 
 		# run the bot
-		await client.start()
+		await client.start(bot_token=bot_token)
 		await client.run_until_disconnected()
 
 async def handle(request):
 	uid = request.match_info.get('id', '')
 	# check the id
 	if uid not in files:
-		return web.Response(status=404, text="HelloWorld")
+		return web.Response(status=404, text="404")
 	# get the range header
 	r = request.headers.get("range")
 	# start a session
 	name = RandomName()
-	client = TelegramClient(name, api_id, api_hash, bot_token)
-	await client.start()
+	client = TelegramClient(name, api_id, api_hash)
+	await client.start(bot_token=bot_token)
 	if r == None:
 		resp = web.StreamResponse()
 		# set headers
