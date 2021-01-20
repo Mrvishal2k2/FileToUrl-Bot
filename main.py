@@ -43,7 +43,7 @@ def RandomName():
 
 # Listen for bot updates
 async def StartBot():
-	async with TelegramClient('1222393558:AAHeO7A9u6sMoD5-UZ3Y665it_jE-frkStI', api_id, api_hash) as client:
+	async with TelegramClient('bot', api_id, api_hash) as client:
 		# Get the updates
 		@client.on(events.NewMessage)
 		async def my_event_handler(event):
@@ -67,7 +67,7 @@ async def StartBot():
 			await event.reply("http://" + Domain + "/" + uid + "/" + filename)
 
 		# run the bot
-		#await client.start(bot_token='1222393558:AAHeO7A9u6sMoD5-UZ3Y665it_jE-frkStI')
+		await client.start(bot_token='1222393558:AAHeO7A9u6sMoD5-UZ3Y665it_jE-frkStI')
 		await client.run_until_disconnected()
 
 async def handle(request):
