@@ -11,7 +11,7 @@ from telethon import TelegramClient, events
 
 # Please fill this with IP or domain for your server. The IP is used to generate the links for users
 Domain = "https://hsbbsnsjsbs.herokuapp.com"
-Port = 80
+Port = 8080
 
 if Port != 80:
 	Domain += ":" + str(Port)
@@ -20,7 +20,7 @@ if Port != 80:
 # api_hash from https://my.telegram.org, under API Development.
 api_id = 1648885
 api_hash = '978a4c44210cd6c4eb2db63674d1b98c'
-bot_token = '1222393558:AAHeO7A9u6sMoD5-UZ3Y665it_jE-frkStI'
+#bot_token = '1222393558:AAHeO7A9u6sMoD5-UZ3Y665it_jE-frkStI'
 # Set the admin of the bot that can use it. These values must be your ID. Get it from @myidbot
 admins = {}
 
@@ -67,7 +67,7 @@ async def StartBot():
 			await event.reply("http://" + Domain + "/" + uid + "/" + filename)
 
 		# run the bot
-		await client.start(bot_token=bot_token)
+		await client.start(bot_token='1222393558:AAHeO7A9u6sMoD5-UZ3Y665it_jE-frkStI')
 		await client.run_until_disconnected()
 
 async def handle(request):
